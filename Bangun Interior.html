@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pekerjaan Interior & Eksterior - Bangun Saka Utama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* === Variabel CSS & Reset === */
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent: #d97706;
+            --accent-hover: #b45309;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        /* === Navigasi === */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        /* === Hero Section === */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('image/Interior.jpg') center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 60px;
+            min-height: 500px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e5e7eb;
+        }
+
+        /* === Detail Section === */
+        .detail-section {
+            background-color: var(--white);
+        }
+
+        .detail-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .detail-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .detail-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .detail-content ul li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1rem;
+            color: var(--text-dark);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .detail-content ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* === Layanan Grid === */
+        .layanan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .layanan-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid var(--accent);
+        }
+
+        .layanan-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .layanan-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .layanan-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .layanan-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* === Process Steps === */
+        .process {
+            background-color: var(--bg-light);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* === Keunggulan === */
+        .keunggulan {
+            background-color: var(--white);
+        }
+
+        .keunggulan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .keunggulan-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .keunggulan-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .keunggulan-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .keunggulan-item h3 {
+            font-size: 1.1rem;
+        }
+
+        .keunggulan-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* === Galeri === */
+        .gallery {
+            background-color: var(--bg-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: var(--white);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            background-color: #e2e8f0;
+        }
+
+        .gallery-item .gallery-caption {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* === CTA Section === */
+        .cta-section {
+            background: linear-gradient(rgba(30, 58, 138, 0.95), rgba(30, 58, 138, 0.95)), url('image/Interior.jpg') center/cover;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .cta-section p {
+            color: #d1d5db;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* === Contact Section === */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* === Footer === */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            color: #d1d5db;
+        }
+
+        /* === Responsif === */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero {
+                height: 60vh;
+                min-height: 400px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .container {
+                padding: 3rem 1.5rem;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigasi -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="image/Logo Bangun Saka Utama.jpg" alt="Bangun Saka Utama" 
+                style="height:70px; vertical-align:middle; margin-right:10px;"></a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">Tentang Kami</a></li>
+                <li><a href="index.html#portfolio">Portofolio</a></li>
+                <li><a href="index.html#contact">Kontak</a></li>
+                <li><a href="index.html">Beranda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Pekerjaan Interior & Eksterior Profesional</h1>
+            <p>Mewujudkan hunian impian dengan desain interior dan eksterior yang elegan, fungsional, dan berkualitas tinggi</p>
+            <a href="#kontak" class="btn">Konsultasi Gratis</a>
+        </div>
+    </section>
+
+    <!-- Detail Layanan -->
+    <section class="container detail-section" id="tentang">
+        <h2 class="section-title">Tentang Layanan Interior & Eksterior</h2>
+        <div class="detail-content">
+            <p>
+                Kami menyediakan jasa desain dan pembangunan interior serta eksterior untuk hunian dan bangunan komersial. 
+                Dari pembuatan Kitchen Set modern, pembangunan Kolam Renang pribadi, Ruang Fitness, hingga penataan Taman yang asri. 
+                Kami hadir untuk mewujudkan ruang impian Anda.
+            </p>
+            <p>
+                Dengan menggabungkan estetika desain terkini dan fungsionalitas tinggi, tim kami bekerja sama dengan Anda 
+                untuk menciptakan ruang yang nyaman, indah, dan sesuai dengan gaya hidup Anda. Setiap proyek ditangani 
+                dengan penuh perhatian terhadap detail menggunakan material berkualitas premium.
+            </p>
+
+            <h3 style="margin-top: 2rem;">Lingkup Pekerjaan Interior:</h3>
+            <ul>
+                <li>Pembuatan Kitchen Set (kabinet, meja dapur, backsplash)</li>
+                <li>Desain dan pembuatan Ruang Fitness & Gym pribadi</li>
+                <li>Pembuatan lemari built-in, rak, dan furnitur custom</li>
+                <li>Desain dan pemasangan pencahayaan interior</li>
+                <li>Pengecatan dan wallpaper dinding interior</li>
+                <li>Pemasangan plafon gipsum dan partisi ruangan</li>
+                <li>Penataan lantai (parket, vinyl, keramik, granit)</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">Lingkup Pekerjaan Eksterior:</h3>
+            <ul>
+                <li>Pembangunan dan renovasi Kolam Renang</li>
+                <li>Pembuatan Taman dan lansekap halaman</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Proses Pengerjaan -->
+    <section class="container process">
+        <h2 class="section-title">Tahapan Pengerjaan</h2>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Konsultasi & Survey</h3>
+                <p>Diskusi kebutuhan, survey lokasi, dan pengukuran lahan secara detail</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Perencanaan & Desain</h3>
+                <p>Pembuatan desain struktur, gambar teknis, dan perhitungan RAB</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Konstruksi</h3>
+                <p>Pelaksanaan pembangunan dengan pengawasan ketat oleh tenaga ahli</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Finishing & Serah Terima</h3>
+                <p>Penyelesaian akhir, quality control, dan serah terima proyek</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan -->
+    <section class="container keunggulan">
+        <h2 class="section-title">Mengapa Memilih Kami?</h2>
+        <div class="keunggulan-grid">
+            <div class="keunggulan-item">
+                <div class="keunggulan-icon">🎨</div>
+                <h3>Desain Eksklusif</h3>
+                <p>Konsep desain interior & eksterior yang unik, modern, dan disesuaikan dengan selera serta gaya hidup Anda</p>
+            </div>
+            <div class="keunggulan-item">
+                <div class="keunggulan-icon">🪴</div>
+                <h3>Material Premium</h3>
+                <p>Menggunakan material berkualitas tinggi yang elegan, ramah lingkungan, dan tahan lama untuk hasil maksimal</p>
+            </div>
+            <div class="keunggulan-item">
+                <div class="keunggulan-icon">📐</div>
+                <h3>Detail Presisi</h3>
+                <p>Pengerjaan dengan ketelitian tinggi pada setiap sudut, ukuran, dan sentuhan akhir ruangan Anda</p>
+            </div>
+            <div class="keunggulan-item">
+                <div class="keunggulan-icon">🤝</div>
+                <h3>Konsultasi Gratis</h3>
+                <p>Dapatkan konsultasi desain dan survey lokasi tanpa biaya untuk membantu mewujudkan ruang impian Anda</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri -->
+    <section class="container gallery" id="portofolio">
+        <h2 class="section-title">Galeri Proyek</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="image/Interior.jpg" alt="Proyek Interior 1">
+                <div class="gallery-caption">Desain Interior Modern - Jakarta</div>
+            </div>
+            <div class="gallery-item">
+                <img src="image/Interior.jpg" alt="Proyek Eksterior 1">
+                <div class="gallery-caption">Taman & Lansekap - Bogor</div>
+            </div>
+            <div class="gallery-item">
+                <img src="image/Interior.jpg" alt="Proyek Interior 2">
+                <div class="gallery-caption">Kitchen Set Custom - Bekasi</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container cta-section" id="kontak">
+        <h2>Siap Mewujudkan Interior Impian Anda?</h2>
+        <p>Hubungi kami sekarang untuk konsultasi gratis dan dapatkan penawaran harga terbaik</p>
+        <a href="#contact" class="btn">Hubungi Kami</a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="container" id="contact">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Informasi Kontak</h3>
+                
+                <div class="contact-item">
+                    <strong>🏢 Representative Office:</strong>
+                    <p>Villa Nusa Indah 3 KD 6 No.14<br>Gunung Putri - Bogor</p>
+                </div>
+                
+                <div class="contact-item">
+                    <strong>🏗️ Workshop:</strong>
+                    <p>Akses Tol Jatikarya, Jl. Alternative Cibubur Rt.02/010<br>Kel. Jatikarya Kec. Jatisampurna, Bekasi</p>
+                </div>
+                
+                <div class="contact-item">
+                    <strong>📞 Telepon:</strong>
+                    <p>0853-3336-8399</p>
+                </div>
+                
+                <div class="contact-item">
+                    <strong>✉️ Email:</strong>
+                    <p>bangunsakautama@gmail.com</p>
+                </div>
+                
+                <div class="contact-item">
+                    <strong>🌐 Website:</strong>
+                    <p>www.bangunsaka.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Bangun Saka Utama. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+ 
