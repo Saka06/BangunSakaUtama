@@ -3,637 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kepuasan Konsumen - Bangun Saka Utama</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <title>Testimoni - Bangun Saka Utama</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
         }
 
-        html {
-            scroll-behavior: smooth;
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: white;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
-        .rating-card {
-            transition: all 0.2s ease;
+        header img {
+            height: 70px;
         }
 
-        .rating-card:hover {
-            transform: translateY(-2px);
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
 
-        input[type="radio"]:checked + .rating-card {
-            border-color: #2e75a5;
-            background-color: #fff7f7;
-            box-shadow: 0 0 0 2px #7f1d1d;
+        nav a {
+            text-decoration: none;
+            color: #172554;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #d97706;
+        }
+
+        /* =========================
+           JUDUL
+        ========================= */
+
+        .testimoni-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+        }
+
+        .testimoni-header h1 {
+            color: #173b80;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .testimoni-header p {
+            color: #666;
+            font-size: 17px;
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-container {
+            width: 90%;
+            max-width: 700px;
+            margin: 20px auto 60px;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .form-container h2 {
+            color: #173b80;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #173b80;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-kirim {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            background: #d97706;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn-kirim:hover {
+            background: #b45309;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+            .preview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                height: auto;
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .testimoni-header h1 {
+                font-size: 30px;
+            }
+
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-    <!-- ================= NAVBAR ================= -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4
-                    flex items-center justify-between">
+    <!-- HEADER -->
+    <header>
+        <a href="index.html">
+            <img src="image/Logo Bangun Saka Utama.jpg"
+                 alt="Bangun Saka Utama">
+        </a>
 
-            <!-- LOGO -->
-            <a href="index.html"
-                class="flex items-center gap-3">
-                <div
-                    class="w-11 h-11 bg-red-900 rounded-xl
-                           flex items-center justify-center
-                           text-white">
-                    <i class="fa-solid fa-building text-lg"></i>
-                </div>
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="index.html#about">Tentang</a>
+            <a href="index.html#services">Layanan</a>
+            <a href="index.html#portofolio">Portofolio</a>
+            <a href="index.html#testimoni">Testimoni</a>
+        </nav>
+    </header>
 
-                <div>
-                    <h1 class="font-bold text-lg text-red-900">
-                        Bangun Saka Utama
-                    </h1>
-                    <p class="text-xs text-gray-500">
-                        Solusi pembangunan terpercaya
-                    </p>
-                </div>
-            </a>
+    <!-- JUDUL -->
+    <section class="testimoni-header">
+        <h1>Berikan Testimoni Anda</h1>
 
-            <!-- KEMBALI -->
-            <a href="index.html"
-                class="text-gray-600 hover:text-red-900
-                       font-medium transition">
-                <i class="fa-solid fa-arrow-left mr-2"></i>
-                Kembali ke Beranda
-            </a>
-        </div>
-    </nav>
-
-    <!-- ================= HERO ================= -->
-    <section class="bg-red-900 text-white">
-        <div class="max-w-4xl mx-auto
-                    px-6 py-16 text-center">
-            <div
-                class="inline-flex items-center gap-2
-                       bg-white/10 px-4 py-2
-                       rounded-full text-sm mb-6">
-                <i class="fa-solid fa-star"></i>
-                Kepuasan Konsumen
-            </div>
-
-            <h2 class="text-3xl md:text-5xl
-                       font-bold mb-5">
-                Bagaimana Pengalaman Anda Bersama Kami?
-            </h2>
-
-            <p class="text-red-100
-                      max-w-2xl mx-auto
-                      leading-relaxed">
-
-                Pendapat Anda sangat berarti bagi
-                Bangun Saka Utama. Bantu kami meningkatkan
-                kualitas pelayanan dengan memberikan
-                penilaian dan pengalaman Anda.
-            </p>
-        </div>
+        <p>
+            Ceritakan pengalaman Anda menggunakan layanan
+            Bangun Saka Utama.
+        </p>
     </section>
 
-    <!-- ================= FORM ================= -->
-    <main class="max-w-3xl mx-auto
-                 px-6 py-12">
+    <!-- FORM -->
+    <div class="form-container">
+        <h2>Bagikan Pengalaman Anda</h2>
 
-        <form id="formTestimoni"
-            class="bg-white rounded-3xl
-                   shadow-sm border border-gray-100
-                   p-6 md:p-10">
-
-            <!-- HEADER FORM -->
-            <div class="mb-10">
-                <h3 class="text-2xl font-bold
-                           text-gray-800 mb-2">
-                    Form Kepuasan Konsumen
-                </h3>
-
-                <p class="text-gray-500 text-sm">
-                    Silakan isi penilaian sesuai
-                    pengalaman Anda.
-                </p>
-            </div>
-
-            <!-- ================= NAMA ================= -->
-            <div class="mb-8">
-                <label
-                    class="block font-semibold mb-3">
-                    Nama Anda
+        <form id="formTestimoni">
+            <div class="form-group">
+                <label for="nama">
+                    Nama
                 </label>
 
                 <input
                     type="text"
                     id="nama"
-                    required
                     placeholder="Masukkan nama Anda"
-                    class="w-full px-4 py-3
-                           border border-gray-200
-                           rounded-xl
-                           focus:outline-none
-                           focus:ring-2
-                           focus:ring-red-900">
+                    required>
             </div>
 
-            <!-- ================= LAYANAN ================= -->
-            <div class="mb-8">
-                <label
-                    class="block font-semibold mb-3">
-                    Layanan / Proyek yang Digunakan
+            <div class="form-group">
+                <label for="rating">
+                    Rating
                 </label>
 
-                <select
-                    id="layanan"
-                    required
-                    class="w-full px-4 py-3
-                           border border-gray-200
-                           rounded-xl bg-white
-                           focus:outline-none
-                           focus:ring-2
-                           focus:ring-red-900">
+                <select id="rating" required>
 
                     <option value="">
-                        Pilih layanan
+                        Pilih rating
                     </option>
 
-                    <option value="Konstruksi">
-                        Konstruksi
+                    <option value="5">
+                        ⭐⭐⭐⭐⭐ Sangat Puas
                     </option>
 
-                    <option value="Renovasi">
-                        Renovasi
+                    <option value="4">
+                        ⭐⭐⭐⭐ Puas
                     </option>
 
-                    <option value="Desain dan Perencanaan">
-                        Desain dan Perencanaan
+                    <option value="3">
+                        ⭐⭐⭐ Cukup
                     </option>
 
-                    <option value="Pembangunan Rumah">
-                        Pembangunan Rumah
+                    <option value="2">
+                        ⭐⭐ Kurang
                     </option>
 
-                    <option value="Lainnya">
-                        Lainnya
+                    <option value="1">
+                        ⭐ Tidak Puas
                     </option>
                 </select>
             </div>
 
-            <!-- ================= KEPUASAN ================= -->
-            <div class="mb-8">
-                <label
-                    class="block font-semibold mb-4">
-                    Seberapa puas Anda dengan
-                    pelayanan kami?
-                </label>
-
-                <div
-                    class="grid grid-cols-1
-                           sm:grid-cols-5 gap-3">
-
-                    <!-- 1 -->
-                    <label>
-                        <input
-                            type="radio"
-                            name="kepuasan"
-                            value="1"
-                            class="hidden"
-                            required>
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   text-center cursor-pointer">
-                            <div class="text-3xl mb-2">
-                                😞
-                            </div>
-
-                            <p class="text-xs
-                                      font-medium">
-                                Sangat Tidak Puas
-                            </p>
-                        </div>
-                    </label>
-                    
-                    <!-- 2 -->
-                    <label>
-                        <input
-                            type="radio"
-                            name="kepuasan"
-                            value="2"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   text-center cursor-pointer">
-                            <div class="text-3xl mb-2">
-                                😕
-                            </div>
-
-                            <p class="text-xs
-                                      font-medium">
-                                Tidak Puas
-                            </p>
-                        </div>
-                    </label>
-
-                    <!-- 3 -->
-                    <label>
-                        <input
-                            type="radio"
-                            name="kepuasan"
-                            value="3"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   text-center cursor-pointer">
-                            <div class="text-3xl mb-2">
-                                😐
-                            </div>
-
-                            <p class="text-xs
-                                      font-medium">
-                                Cukup
-                            </p>
-                        </div>
-                    </label>
-
-                    <!-- 4 -->
-                    <label>
-                        <input
-                            type="radio"
-                            name="kepuasan"
-                            value="4"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   text-center cursor-pointer">
-
-                            <div class="text-3xl mb-2">
-                                🙂
-                            </div>
-
-                            <p class="text-xs
-                                      font-medium">
-                                Puas
-                            </p>
-                        </div>
-                    </label>
-
-                    <!-- 5 -->
-                    <label>
-                        <input
-                            type="radio"
-                            name="kepuasan"
-                            value="5"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   text-center cursor-pointer">
-                            <div class="text-3xl mb-2">
-                                😍
-                            </div>
-                            <p class="text-xs
-                                      font-medium">
-                                Sangat Puas
-                            </p>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- ================= KUALITAS ================= -->
-            <div class="mb-8">
-                <label
-                    class="block font-semibold mb-3">
-                    Bagaimana kualitas hasil pekerjaan kami?
-                </label>
-                <div class="space-y-3">
-                    <label>
-                        <input
-                            type="radio"
-                            name="kualitas"
-                            value="Sangat Baik"
-                            class="hidden"
-                            required>
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   cursor-pointer">
-
-                            <i class="fa-solid fa-circle-check
-                                      text-green-600 mr-2"></i>
-                            Sangat Baik
-                        </div>
-                    </label>
-
-                    <label>
-                        <input
-                            type="radio"
-                            name="kualitas"
-                            value="Baik"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   cursor-pointer">
-
-                            <i class="fa-solid fa-thumbs-up
-                                      text-blue-600 mr-2"></i>
-                            Baik
-                        </div>
-                    </label>
-
-                    <label>
-
-                        <input
-                            type="radio"
-                            name="kualitas"
-                            value="Cukup"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   cursor-pointer">
-                            <i class="fa-solid fa-minus
-                                      text-gray-500 mr-2"></i>
-                            Cukup
-                        </div>
-                    </label>
-
-                    <label>
-                        <input
-                            type="radio"
-                            name="kualitas"
-                            value="Kurang"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   cursor-pointer">
-                            <i class="fa-solid fa-thumbs-down
-                                      text-red-600 mr-2"></i>
-                            Kurang
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- ================= KETEPATAN WAKTU ================= -->
-            <div class="mb-8">
-                <label
-                    class="block font-semibold mb-3">
-                    Bagaimana ketepatan waktu pengerjaan?
-                </label>
-
-                <div class="space-y-3">
-                    <label>
-                        <input
-                            type="radio"
-                            name="waktu"
-                            value="Sangat Tepat Waktu"
-                            class="hidden"
-                            required>
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   cursor-pointer">
-                            <i class="fa-solid fa-clock
-                                      text-green-600 mr-2"></i>
-                            Sangat Tepat Waktu
-                        </div>
-                    </label>
-
-                    <label>
-                        <input
-                            type="radio"
-                            name="waktu"
-                            value="Tepat Waktu"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   cursor-pointer">
-                            <i class="fa-solid fa-clock
-                                      text-blue-600 mr-2"></i>
-                            Tepat Waktu
-                        </div>
-                    </label>
-
-                    <label>
-                        <input
-                            type="radio"
-                            name="waktu"
-                            value="Cukup Tepat"
-                            class="hidden">
-
-                        <div
-                            class="rating-card
-                                   border border-gray-200
-                                   rounded-xl p-4
-                                   cursor-pointer">
-                            <i class="fa-solid fa-clock
-                                      text-gray-500 mr-2"></i>
-                            Cukup Tepat
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <!-- ================= KOMENTAR ================= -->
-
-            <div class="mb-8">
-                <label
-                    class="block font-semibold mb-3">
-                    Ceritakan pengalaman Anda
+            <div class="form-group">
+                <label for="pesan">
+                    Testimoni
                 </label>
 
                 <textarea
-                    id="komentar"
-                    required
-                    rows="5"
-                    placeholder="Tuliskan pengalaman, kesan, atau saran Anda..."
-                    class="w-full px-4 py-3
-                           border border-gray-200
-                           rounded-xl resize-none
-                           focus:outline-none
-                           focus:ring-2
-                           focus:ring-red-900"></textarea>
+                    id="pesan"
+                    placeholder="Tuliskan pengalaman Anda..."
+                    required></textarea>
             </div>
 
-            <!-- ================= IZIN TESTIMONI ================= -->
-            <div class="mb-8">
-                <label
-                    class="flex items-start gap-3
-                           cursor-pointer">
-
-                    <input
-                        type="checkbox"
-                        id="izin"
-                        required
-                        class="mt-1 w-4 h-4
-                               accent-red-900">
-
-                    <span class="text-sm text-gray-600">
-                        Saya bersedia pengalaman dan
-                        testimoni saya ditampilkan pada
-                        website Bangun Saka Utama.
-                    </span>
-                </label>
-            </div>
-
-            <!-- ================= BUTTON ================= -->
             <button
                 type="submit"
-                class="w-full bg-red-900
-                       hover:bg-red-800
-                       text-white font-semibold
-                       py-4 rounded-xl
-                       transition">
-                <i class="fa-solid fa-paper-plane mr-2"></i>
-                Kirim Penilaian
+                class="btn-kirim">
+                Kirim Testimoni
             </button>
-
-            <p class="text-center text-xs
-                      text-gray-400 mt-4">
-                Terima kasih atas waktu dan kepercayaan
-                Anda kepada Bangun Saka Utama.
-            </p>
         </form>
-    </main>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="bg-gray-900 text-white">
-        <div
-            class="max-w-7xl mx-auto px-6 py-8
-                   text-center">
-
-            <h3 class="font-bold mb-2">
-                Bangun Saka Utama
-            </h3>
-            <p class="text-gray-400 text-sm">
-                Terima kasih telah mempercayakan
-                kebutuhan Anda kepada kami.
-            </p>
-            <div class="mt-4 text-gray-500 text-xs">
-                © 2026 Bangun Saka Utama. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-
-    <!-- ================= JAVASCRIPT ================= -->
+    </div>
 
     <script>
         const form =
             document.getElementById("formTestimoni");
 
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
+        const daftarTestimoni =
+            document.getElementById("daftarTestimoni");
 
-            // Ambil data
-            const nama =
-                document.getElementById("nama").value.trim();
+        /* =========================
+           AMBIL DATA
+        ========================= */
 
-            const layanan =
-                document.getElementById("layanan").value;
+        function getTestimoni() {
 
-            const kepuasan =
-                document.querySelector(
-                    'input[name="kepuasan"]:checked'
-                ).value;
+            return JSON.parse(
+                localStorage.getItem("testimoniBSU")
+            ) || [];
+        }
 
-            const kualitas =
-                document.querySelector(
-                    'input[name="kualitas"]:checked'
-                ).value;
+        /* =========================
+           KIRIM TESTIMONI
+        ========================= */
 
-            const waktu =
-                document.querySelector(
-                    'input[name="waktu"]:checked'
-                ).value;
+        form.addEventListener(
+            "submit",
+            function(event) {
+                event.preventDefault();
 
-            const komentar =
-                document.getElementById("komentar").value.trim();
+                const nama =
+                    document.getElementById("nama")
+                    .value.trim();
 
-            // Data testimoni
-            const dataBaru = {
-                id: Date.now(),
-                nama: nama,
-                layanan: layanan,
-                kepuasan: Number(kepuasan),
-                kualitas: kualitas,
-                waktu: waktu,
-                komentar: komentar,
-                tanggal: new Date()
-                    .toLocaleDateString("id-ID")
-            };
+                const rating =
+                    document.getElementById("rating")
+                    .value;
 
-            // Ambil data sebelumnya
-            let dataTestimoni =
-                JSON.parse(
-                    localStorage.getItem(
-                        "testimoniBSU"
-                    )
-                ) || [];
+                const pesan =
+                    document.getElementById("pesan")
+                    .value.trim();
 
-            // Tambahkan data baru
-            dataTestimoni.push(dataBaru);
+                if (
+                    nama === "" ||
+                    rating === "" ||
+                    pesan === ""
+                ) {
+                    alert(
+                        "Silakan lengkapi semua data."
+                    );
+                    return;
+                }
 
-            // Simpan
-            localStorage.setItem(
-                "testimoniBSU",
-                JSON.stringify(dataTestimoni)
-            );
+                const data =
+                    getTestimoni();
 
-            // Notifikasi
-            alert(
-                "Terima kasih, " +
-                nama +
-                "! Penilaian Anda berhasil dikirim."
-            );
+                data.push({
+                    nama: nama,
+                    rating: Number(rating),
+                    pesan: pesan
+                });
 
-            // Kembali ke index
-            window.location.href =
-                "index.html#testimoni";
-        });
+                localStorage.setItem(
+                    "testimoniBSU",
+                    JSON.stringify(data)
+                );
+
+                alert(
+                    "Terima kasih! Testimoni Anda berhasil dikirim."
+                );
+
+                form.reset();
+                tampilkanTestimoni();
+
+            }
+        );
+
+        /* Jalankan saat halaman dibuka */
+        tampilkanTestimoni();
+
     </script>
+    
 </body>
 </html>

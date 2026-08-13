@@ -278,32 +278,131 @@
             margin-bottom: 1rem; 
         }
 
-        /* === Testimoni === */
-        .testi-grid {
+        /* =========================
+        TESTIMONI DI INDEX
+        ========================= */
+
+        .testimoni-home {
+            background: #f3f4f6;
+        }
+        .testimoni-home-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns:
+                repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-        .testi-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: left;
+        .testimoni-home-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow:
+                0 6px 20px rgba(0,0,0,0.08);
+            border-top:
+                4px solid #d97706;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
         }
-        .stars { 
-            color: var(--accent); 
-            font-size: 1.2rem; 
-            margin-bottom: 1rem; 
+        .testimoni-home-card:hover {
+            transform:
+                translateY(-8px);
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.14);
         }
-        .quote { 
-            font-style: italic; 
-            color: var(--text-light); 
-            margin-bottom: 1rem; 
+        .testimoni-home-stars {
+            color: #f59e0b;
+            font-size: 22px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
         }
-        .author { 
-            font-weight: bold; 
-            color: var(--primary); 
+        .testimoni-home-text {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.8;
+            font-style: italic;
+            min-height: 100px;
+            margin-bottom: 20px;
+        }
+        .testimoni-home-user {
+            border-top:
+                1px solid #eeeeee;
+            padding-top: 18px;
+        }
+        .testimoni-home-user strong {
+            display: block;
+            color: #173b80;
+            font-size: 17px;
+        }
+        .testimoni-home-user span {
+            color: #888;
+            font-size: 13px;
+        }
+        .testimoni-button {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .testimoni-home-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .testimoni-home-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========================
+           PREVIEW TESTIMONI
+        ========================= */
+        .preview-section {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto 80px;
+        }
+        .preview-section h2 {
+            text-align: center;
+            color: #173b80;
+            margin-bottom: 30px;
+        }
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .preview-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid #d97706;
+        }
+        .preview-stars {
+            color: #f59e0b;
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+        .preview-text {
+            color: #555;
+            line-height: 1.7;
+            font-style: italic;
+            min-height: 80px;
+            margin-bottom: 20px;
+        }
+        .preview-name {
+            color: #173b80;
+            font-weight: bold;
+            font-size: 17px;
+        }
+        .preview-status {
+            color: #888;
+            font-size: 13px;
+            margin-top: 4px;
         }
 
         /* === Kontak & Footer === */
@@ -354,20 +453,25 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Responsive */
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 900px) {
+            .testimoni-home-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links { 
-                display: none; 
-            }
-            .hero h1 { 
-                font-size: 2.2rem; 
-            }
-            .hero-buttons { 
-                flex-direction: column; 
-            }
-            .contact-grid { 
-                grid-template-columns: 1fr; 
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-buttons { flex-direction: column; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .testimoni-home-grid { grid-template-columns: 1fr; }
+            .testimoni-card { padding: 25px; }
         }
     </style>
 </head>
@@ -384,8 +488,8 @@
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#services">Layanan</a></li>
                 <li><a href="#portfolio">Portofolio</a></li>
-                <li><a href="#testimoni" class="nav-link">Testimoni</a>
-                <li><a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20bertanya%20mengenai%20Career%20Planner"
+                <li><a href="testimoni.html" class="nav-link">Testimoni</a></li>
+                <li><a href="https://wa.me/6281311500788?text=Halo%20saya%20ingin%20bertanya%20mengenai%20Career%20Planner"
                     class="btn btn-primary" target="_blank" class="nav-link">Hubungi Kami
                     </a>
                 </li>
@@ -523,40 +627,19 @@
     </section>
 
     <!-- Testimoni -->
-    <section id="testimoni" class="testimoni-section">
-    <div class="testimoni-container">
+    <section class="testimoni-home" id="testimoni">
+        <div class="container">
 
-        <!-- JUDUL -->
-        <div class="testimoni-header">
-            <span class="testimoni-label">
-                TESTIMONI KONSUMEN
-            </span>
-
-            <h2>
-                Apa Kata Konsumen Kami?
+            <h2 class="section-title">
+                Testimoni Pelanggan
             </h2>
 
-            <p>
-                Kepuasan dan pengalaman konsumen menjadi bagian penting
-                bagi kami untuk terus memberikan pelayanan terbaik.
-            </p>
+            <div
+                class="testimoni-home-grid"
+                id="testimoniHome">
+            </div>
 
         </div>
-
-
-        <!-- DAFTAR TESTIMONI -->
-        <div id="daftarTestimoni" class="testimoni-grid">
-        </div>
-
-        <!-- BUTTON -->
-        <div class="testimoni-button">
-
-            <a href="testimoni.html">
-                <i class="fa-solid fa-star"></i>
-                Berikan Penilaian
-            </a>
-        </div>
-    </div>
     </section>
 
     <!-- Kontak -->
@@ -635,144 +718,75 @@
     </footer>
 
     <script>
-        function tampilkanTestimoniBSU() {
-            const container =
-                document.getElementById("daftarTestimoni");
-            if (!container) return;
+    /* =========================
+       TESTIMONI INDEX
+    ========================= */
 
-            const data =
-                JSON.parse(
-                    localStorage.getItem("testimoniBSU")
-                ) || [];
+    const testimoniHome = document.getElementById('testimoniHome');
 
-            // Belum ada testimoni
-            if (data.length === 0) {
-                container.innerHTML = `
-                    <div class="col-span-full
-                                text-center py-10">
+    function tampilkanTestimoniHome() {
+        if (!testimoniHome) return;
 
-                        <div class="text-gray-300
-                                    text-5xl mb-4">
+        let data = [];
 
-                            <i class="fa-regular fa-comments"></i>
-                        </div>
-
-                        <p class="text-gray-500">
-                            Belum ada testimoni konsumen.
-                        </p>
-
-                        <p class="text-sm text-gray-400 mt-1">
-                            Jadilah konsumen pertama yang
-                            memberikan penilaian.
-                        </p>
-                    </div>
-                `;
-                return;
-            }
-
-            // Ambil 6 testimoni terbaru
-            const testimoniTerbaru =
-                data.slice(-6).reverse();
-                
-            container.innerHTML =
-                testimoniTerbaru.map(item => {
-                    const rating =
-                        "★".repeat(item.kepuasan) +
-                        "☆".repeat(5 - item.kepuasan);
-                    return `
-                        <div
-                            class="bg-white rounded-2xl
-                                p-6 border border-gray-100
-                                shadow-sm hover:shadow-md
-                                transition">
-
-                            <!-- USER -->
-                            <div
-                                class="flex items-center
-                                    justify-between mb-5">
-                                <div
-                                    class="flex items-center gap-3">
-
-                                    <div
-                                        class="w-11 h-11
-                                            rounded-full
-                                            bg-red-100
-                                            text-red-900
-                                            flex items-center
-                                            justify-center
-                                            font-bold">
-
-                                        ${item.nama
-                                            .charAt(0)
-                                            .toUpperCase()}
-                                    </div>
-                                    <div>
-                                        
-                                        <h3
-                                            class="font-semibold
-                                                text-gray-800">
-
-                                            ${item.nama}
-                                        </h3>
-
-                                        <p
-                                            class="text-xs
-                                                text-gray-400">
-                                            ${item.layanan}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="text-yellow-400
-                                        text-sm">
-                                    ${rating}
-                                </div>
-                            </div>
-
-                            <!-- KOMENTAR -->
-                            <p
-                                class="text-gray-600
-                                    text-sm
-                                    leading-relaxed">
-                                "${item.komentar}"
-                            </p>
-
-                            <!-- FOOTER CARD -->
-                            <div
-                                class="mt-5 pt-4
-                                    border-t
-                                    border-gray-100
-                                    flex justify-between
-                                    items-center">
-
-                                <span
-                                    class="text-xs
-                                        text-gray-400">
-                                    ${item.tanggal}
-                                </span>
-
-                                <span
-                                    class="text-xs
-                                        text-green-600
-                                        font-medium">
-                                    <i class="fa-solid
-                                            fa-circle-check mr-1">
-                                    </i>
-                                    Konsumen
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                }).join("");
+        try {
+            data = JSON.parse(localStorage.getItem('testimoniBSU')) || [];
+        } catch (error) {
+            console.error('Data testimoni tidak dapat dibaca:', error);
+            data = [];
         }
 
-        // Jalankan ketika halaman dibuka
-        document.addEventListener(
-            "DOMContentLoaded",
-            tampilkanTestimoniBSU
-        );
-        </script>
+        testimoniHome.innerHTML = '';
+
+        if (!Array.isArray(data) || data.length === 0) {
+            testimoniHome.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; color: #777; padding: 30px;">
+                    Belum ada testimoni pelanggan.
+                </div>
+            `;
+            return;
+        }
+
+        // Tampilkan maksimal 3 testimoni terbaru
+        const dataTerbaru = data.slice(-3).reverse();
+
+        dataTerbaru.forEach(function(item) {
+            const nama = item && item.nama ? item.nama : 'Pelanggan';
+            const pesan = item && item.pesan ? item.pesan : 'Tidak ada komentar.';
+            let rating = Number(item && item.rating);
+
+            if (!Number.isFinite(rating) || rating < 1) rating = 5;
+            rating = Math.min(5, Math.floor(rating));
+
+            const bintang = '★'.repeat(rating);
+            const card = document.createElement('div');
+            card.className = 'testimoni-home-card';
+
+            card.innerHTML = `
+                <div class="testimoni-home-stars">${bintang}</div>
+                <p class="testimoni-home-text">"${escapeHTML(pesan)}"</p>
+                <div class="testimoni-home-user">
+                    <strong>${escapeHTML(nama)}</strong>
+                    <span>Pelanggan</span>
+                </div>
+            `;
+
+            testimoniHome.appendChild(card);
+        });
+    }
+
+    function escapeHTML(text) {
+        return String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    tampilkanTestimoniHome();
+</script>
+    
 
 </body>
 </html>
