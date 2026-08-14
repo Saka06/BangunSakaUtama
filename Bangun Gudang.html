@@ -373,6 +373,8 @@
             background: var(--primary);
             color: #d1d5db;
             padding: 4rem 2rem 2rem;
+            margin-top: 60px;
+            border-radius: 12px 12px 0 0;
         }
         .footer-grid {
             max-width: 1200px;
@@ -421,6 +423,142 @@
             .contact-grid { 
                 grid-template-columns: 1fr; 
             }
+        }
+
+        /* =========================================
+        ANIMASI SLIDE SAAT SCROLL
+        ========================================= */
+
+        .slide-animation {
+            opacity: 0;
+            transform: translateY(60px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .slide-animation.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Slide dari kiri */
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-70px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .slide-left.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Slide dari kanan */
+        .slide-right {
+            opacity: 0;
+            transform: translateX(70px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .slide-right.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Stagger / jeda antar kotak */
+        .slide-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .slide-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .slide-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .slide-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        .slide-delay-5 {
+            transition-delay: 0.5s;
+        }
+
+        .slide-delay-6 {
+            transition-delay: 0.6s;
+        }
+
+        /* =========================================
+        SLIDE GAMBAR
+        ========================================= */
+
+        .slide-image {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .slide-image.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* =========================================
+        SLIDE PARAGRAF
+        ========================================= */
+
+        p {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        p.slide-show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animasi tombol */
+        .btn {
+            transition:
+                transform 0.3s ease,
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Animasi kotak/card */
+        .reason-card,
+        .service-card,
+        .portfolio-card,
+        .testimoni-home-card,
+        .preview-card,
+        .stats-container {
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        .reason-card:hover,
+        .service-card:hover,
+        .portfolio-card:hover,
+        .testimoni-home-card:hover,
+        .preview-card:hover,
+        .stats-container:hover {
+            transform: translateY(-8px);
         }
     </style>
 </head>
@@ -559,41 +697,6 @@
                 class="btn btn-primary" target="_blank" class="nav-link">Hubungi Kami</a>
     </section>
 
-    <!-- Contact Section -->
-    <section class="container" id="contact">
-        <h2 class="section-title">Hubungi Kami</h2>
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <h3>Informasi Kontak</h3>
-                
-                <div class="contact-item">
-                    <strong>🏢 Representative Office:</strong>
-                    <p>Villa Nusa Indah 3 KD 6 No.14<br>Gunung Putri - Bogor</p>
-                </div>
-                
-                <div class="contact-item">
-                    <strong>🏗️ Workshop:</strong>
-                    <p>Akses Tol Jatikarya, Jl. Alternative Cibubur Rt.02/010<br>Kel. Jatikarya Kec. Jatisampurna, Bekasi</p>
-                </div>
-                
-                <div class="contact-item">
-                    <strong>📞 Telepon:</strong>
-                    <p>0853-3336-8399</p>
-                </div>
-                
-                <div class="contact-item">
-                    <strong>📞 Telepon:</strong>
-                    <p>0813-1150-0788</p>
-                </div>
-                
-                <div class="contact-item">
-                    <strong>✉️ Email:</strong>
-                    <p>kukuhsetyo1478@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer Lengkap -->
     <footer>
         <div class="footer-grid">
@@ -633,6 +736,182 @@
             <p>&copy; 2026 Bangun Saka Utama. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* =========================================
+            1. PARAGRAF
+            ========================================= */
+
+            const paragraf = document.querySelectorAll("p");
+
+            const paragraphObserver = new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("slide-show");
+                            paragraphObserver.unobserve(entry.target);
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.2
+                }
+            );
+
+            paragraf.forEach(function (p) {
+                paragraphObserver.observe(p);
+            });
+
+
+            /* =========================================
+            2. GAMBAR
+            ========================================= */
+
+            const gambar = document.querySelectorAll("img");
+
+            const imageObserver = new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("show");
+                            imageObserver.unobserve(entry.target);
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.2
+                }
+            );
+
+            gambar.forEach(function (img) {
+
+                img.classList.add("slide-image");
+                imageObserver.observe(img);
+
+            });
+
+
+            /* =========================================
+            3. ELEMEN LAIN
+            ========================================= */
+
+            const elements = document.querySelectorAll(`
+                h1,
+                h2,
+                h3,
+                .btn,
+                .reason-card,
+                .service-card,
+                .portfolio-card,
+                .testimoni-home-card,
+                .preview-card,
+                .stats-container,
+                .stat-item,
+                .contact-info,
+                .contact-map,
+                .footer-col,
+                .footer-bottom
+            `);
+
+
+            elements.forEach(function (element, index) {
+
+                if (
+                    element.textContent.trim() === "" &&
+                    !element.querySelector("img")
+                ) {
+                    return;
+                }
+
+
+                /* =========================
+                KOTAK / CARD
+                ========================= */
+
+                if (
+                    element.classList.contains("reason-card") ||
+                    element.classList.contains("service-card") ||
+                    element.classList.contains("portfolio-card") ||
+                    element.classList.contains("testimoni-home-card") ||
+                    element.classList.contains("preview-card") ||
+                    element.classList.contains("stat-item") ||
+                    element.classList.contains("stats-container")
+                ) {
+
+                    element.classList.add("slide-animation");
+
+                    const delay = (index % 6) + 1;
+
+                    element.classList.add(
+                        `slide-delay-${delay}`
+                    );
+
+                }
+
+                /* =========================
+                JUDUL / TOMBOL / TEKS LAIN
+                ========================= */
+
+                else {
+
+                    if (index % 2 === 0) {
+                        element.classList.add("slide-left");
+                    } else {
+                        element.classList.add("slide-right");
+                    }
+
+                }
+
+            });
+
+
+            /* =========================================
+            4. OBSERVER ELEMEN LAIN
+            ========================================= */
+
+            const elementObserver = new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            elementObserver.unobserve(entry.target);
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+
+            document.querySelectorAll(`
+                .slide-animation,
+                .slide-left,
+                .slide-right
+            `).forEach(function (element) {
+
+                elementObserver.observe(element);
+
+            });
+
+        });
+    </script>
 
 </body>
 </html>

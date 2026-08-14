@@ -419,6 +419,8 @@
             background: var(--primary);
             color: #d1d5db;
             padding: 4rem 2rem 2rem;
+            margin-top: 60px;
+            border-radius: 12px 12px 0 0;
         }
         .footer-grid {
             max-width: 1200px;
@@ -473,6 +475,130 @@
             .testimoni-home-grid { grid-template-columns: 1fr; }
             .testimoni-card { padding: 25px; }
         }
+
+
+        /* =========================================
+           ANIMASI SAAT SCROLL
+           ========================================= */
+
+        .paragraph-animation {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .paragraph-animation.slide-show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-image {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-image.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-70px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-left.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(70px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-right.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-animation {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-animation.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-delay-1 { transition-delay: 0.1s; }
+        .slide-delay-2 { transition-delay: 0.2s; }
+        .slide-delay-3 { transition-delay: 0.3s; }
+        .slide-delay-4 { transition-delay: 0.4s; }
+        .slide-delay-5 { transition-delay: 0.5s; }
+        .slide-delay-6 { transition-delay: 0.6s; }
+
+        .btn {
+            transition:
+                transform 0.3s ease,
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+        }
+
+        .reason-card,
+        .service-card,
+        .portfolio-card,
+        .testimoni-home-card,
+        .preview-card {
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+        .reason-card:hover,
+        .service-card:hover,
+        .portfolio-card:hover,
+        .testimoni-home-card:hover,
+        .preview-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+        }
+
+        .stat-number {
+            display: block;
+            min-width: 120px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+
+            .paragraph-animation,
+            .slide-image,
+            .slide-left,
+            .slide-right,
+            .slide-animation {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -490,7 +616,7 @@
                 <li><a href="#portfolio">Portofolio</a></li>
                 <li><a href="testimoni.html" class="nav-link">Testimoni</a></li>
                 <li><a href="https://wa.me/6281311500788?text=Halo%20saya%20ingin%20bertanya%20mengenai%20Career%20Planner"
-                    class="btn btn-primary" target="_blank" class="nav-link">Hubungi Kami
+                    class="btn btn-primary nav-link" target="_blank">Hubungi Kami
                     </a>
                 </li>
             </ul>
@@ -513,15 +639,15 @@
     <div class="container" style="padding-top: 0; padding-bottom: 0;">
         <div class="stats-container">
             <div class="stat-item">
-                <div class="stat-number">150+</div>
+                <div class="stat-number" data-target="150" data-suffix="+">0</div>
                 <div class="stat-label">Proyek Selesai</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">15+</div>
+                <div class="stat-number" data-target="15" data-suffix="+">0</div>
                 <div class="stat-label">Tahun Pengalaman</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">98%</div>
+                <div class="stat-number" data-target="98" data-suffix="%">0</div>
                 <div class="stat-label">Pelanggan Puas</div>
             </div>
         </div>
@@ -718,75 +844,289 @@
     </footer>
 
     <script>
-    /* =========================
-       TESTIMONI INDEX
-    ========================= */
+        document.addEventListener("DOMContentLoaded", function () {
 
-    const testimoniHome = document.getElementById('testimoniHome');
+        /* =========================================
+           OBSERVER ANIMASI
+           ========================================= */
 
-    function tampilkanTestimoniHome() {
-        if (!testimoniHome) return;
+        const paragraphObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("slide-show");
+                        paragraphObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
 
-        let data = [];
+        const imageObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        imageObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
 
-        try {
-            data = JSON.parse(localStorage.getItem('testimoniBSU')) || [];
-        } catch (error) {
-            console.error('Data testimoni tidak dapat dibaca:', error);
-            data = [];
-        }
+        const elementObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        elementObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
 
-        testimoniHome.innerHTML = '';
+        /* =========================================
+           1. COUNT UP ANGKA STATISTIK
+           ========================================= */
 
-        if (!Array.isArray(data) || data.length === 0) {
-            testimoniHome.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; color: #777; padding: 30px;">
-                    Belum ada testimoni pelanggan.
-                </div>
-            `;
-            return;
-        }
+        const statNumbers =
+            document.querySelectorAll(".stat-number");
 
-        // Tampilkan maksimal 3 testimoni terbaru
-        const dataTerbaru = data.slice(-3).reverse();
+        const counterObserver = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
 
-        dataTerbaru.forEach(function(item) {
-            const nama = item && item.nama ? item.nama : 'Pelanggan';
-            const pesan = item && item.pesan ? item.pesan : 'Tidak ada komentar.';
-            let rating = Number(item && item.rating);
+                    if (!entry.isIntersecting) return;
 
-            if (!Number.isFinite(rating) || rating < 1) rating = 5;
-            rating = Math.min(5, Math.floor(rating));
+                    const counter = entry.target;
+                    const target = Number(counter.dataset.target);
+                    const suffix = counter.dataset.suffix || "";
 
-            const bintang = '★'.repeat(rating);
-            const card = document.createElement('div');
-            card.className = 'testimoni-home-card';
+                    if (!Number.isFinite(target)) {
+                        console.error(
+                            "data-target tidak valid:",
+                            counter
+                        );
+                        return;
+                    }
 
-            card.innerHTML = `
-                <div class="testimoni-home-stars">${bintang}</div>
-                <p class="testimoni-home-text">"${escapeHTML(pesan)}"</p>
-                <div class="testimoni-home-user">
-                    <strong>${escapeHTML(nama)}</strong>
-                    <span>Pelanggan</span>
-                </div>
-            `;
+                    const duration = 2000;
+                    const startTime = performance.now();
 
-            testimoniHome.appendChild(card);
+                    function updateCounter(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(
+                            elapsed / duration,
+                            1
+                        );
+
+                        const easeOut =
+                            1 - Math.pow(1 - progress, 3);
+
+                        const current = Math.floor(
+                            easeOut * target
+                        );
+
+                        counter.textContent =
+                            current + suffix;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent =
+                                target + suffix;
+                        }
+                    }
+
+                    requestAnimationFrame(updateCounter);
+                    counterObserver.unobserve(counter);
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        statNumbers.forEach(function (counter) {
+            counterObserver.observe(counter);
         });
-    }
 
-    function escapeHTML(text) {
-        return String(text)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/\"/g, '&quot;')
-            .replace(/'/g, '&#039;');
-    }
+        /* =========================================
+           2. TESTIMONI
+           ========================================= */
 
-    tampilkanTestimoniHome();
-</script>
-    
+        const testimoniHome =
+            document.getElementById("testimoniHome");
+
+        function escapeHTML(text) {
+            return String(text)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function tampilkanTestimoniHome() {
+
+            if (!testimoniHome) return;
+
+            let data = [];
+
+            try {
+                data =
+                    JSON.parse(
+                        localStorage.getItem("testimoniBSU")
+                    ) || [];
+            } catch (error) {
+                console.error(
+                    "Data testimoni tidak dapat dibaca:",
+                    error
+                );
+            }
+
+            testimoniHome.innerHTML = "";
+
+            if (!Array.isArray(data) || data.length === 0) {
+                testimoniHome.innerHTML = `
+                    <div style="
+                        grid-column: 1 / -1;
+                        text-align: center;
+                        color: #777;
+                        padding: 30px;
+                    ">
+                        Belum ada testimoni pelanggan.
+                    </div>
+                `;
+                return;
+            }
+
+            const dataTerbaru =
+                data.slice(-3).reverse();
+
+            dataTerbaru.forEach(function (item) {
+
+                const nama =
+                    item && item.nama
+                        ? item.nama
+                        : "Pelanggan";
+
+                const pesan =
+                    item && item.pesan
+                        ? item.pesan
+                        : "Tidak ada komentar.";
+
+                let rating =
+                    Number(item && item.rating);
+
+                if (!Number.isFinite(rating) || rating < 1) {
+                    rating = 5;
+                }
+
+                rating = Math.min(5, Math.floor(rating));
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "testimoni-home-card slide-animation";
+
+                card.innerHTML = `
+                    <div class="testimoni-home-stars">
+                        ${"★".repeat(rating)}
+                    </div>
+
+                    <p class="testimoni-home-text">
+                        "${escapeHTML(pesan)}"
+                    </p>
+
+                    <div class="testimoni-home-user">
+                        <strong>
+                            ${escapeHTML(nama)}
+                        </strong>
+                        <span>Pelanggan</span>
+                    </div>
+                `;
+
+                testimoniHome.appendChild(card);
+                elementObserver.observe(card);
+            });
+        }
+
+        /* =========================================
+           3. PARAGRAF
+           ========================================= */
+
+        document.querySelectorAll("p").forEach(function (p) {
+            p.classList.add("paragraph-animation");
+            paragraphObserver.observe(p);
+        });
+
+        /* =========================================
+           4. GAMBAR
+           ========================================= */
+
+        document.querySelectorAll("img").forEach(function (img) {
+            img.classList.add("slide-image");
+            imageObserver.observe(img);
+        });
+
+        /* =========================================
+           5. CARD, JUDUL, TOMBOL, KONTAK, FOOTER
+           ========================================= */
+
+        const elements = document.querySelectorAll(`
+            h1,
+            h2,
+            h3,
+            .btn,
+            .reason-card,
+            .service-card,
+            .portfolio-card,
+            .preview-card,
+            .stats-container,
+            .stat-item,
+            .contact-info,
+            .contact-map,
+            .footer-col,
+            .footer-bottom
+        `);
+
+        elements.forEach(function (element, index) {
+
+            const isCard =
+                element.classList.contains("reason-card") ||
+                element.classList.contains("service-card") ||
+                element.classList.contains("portfolio-card") ||
+                element.classList.contains("preview-card") ||
+                element.classList.contains("stats-container") ||
+                element.classList.contains("stat-item");
+
+            if (isCard) {
+                element.classList.add("slide-animation");
+                element.classList.add(
+                    `slide-delay-${(index % 6) + 1}`
+                );
+                elementObserver.observe(element);
+                return;
+            }
+
+            if (index % 2 === 0) {
+                element.classList.add("slide-left");
+            } else {
+                element.classList.add("slide-right");
+            }
+
+            elementObserver.observe(element);
+        });
+
+        /* =========================================
+           6. TAMPILKAN TESTIMONI
+           ========================================= */
+
+        tampilkanTestimoniHome();
+
+    });
+    </script>
 
 </body>
 </html>
