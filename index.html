@@ -285,96 +285,170 @@
         .testimoni-home {
             background: #f3f4f6;
         }
+
         .testimoni-home-grid {
+
             display: grid;
+
             grid-template-columns:
                 repeat(3, 1fr);
+
             gap: 25px;
+
             max-width: 1100px;
+
             margin: 0 auto;
+
         }
+
+
         .testimoni-home-card {
+
             background: #ffffff;
+
             padding: 30px;
+
             border-radius: 15px;
+
             box-shadow:
                 0 6px 20px rgba(0,0,0,0.08);
+
             border-top:
                 4px solid #d97706;
+
             transition:
                 transform 0.3s ease,
                 box-shadow 0.3s ease;
-        }
-        .testimoni-home-card:hover {
-            transform:
-                translateY(-8px);
-            box-shadow:
-                0 12px 30px rgba(0,0,0,0.14);
-        }
-        .testimoni-home-stars {
-            color: #f59e0b;
-            font-size: 22px;
-            letter-spacing: 3px;
-            margin-bottom: 18px;
-        }
-        .testimoni-home-text {
-            color: #555;
-            font-size: 15px;
-            line-height: 1.8;
-            font-style: italic;
-            min-height: 100px;
-            margin-bottom: 20px;
-        }
-        .testimoni-home-user {
-            border-top:
-                1px solid #eeeeee;
-            padding-top: 18px;
-        }
-        .testimoni-home-user strong {
-            display: block;
-            color: #173b80;
-            font-size: 17px;
-        }
-        .testimoni-home-user span {
-            color: #888;
-            font-size: 13px;
-        }
-        .testimoni-button {
-            text-align: center;
-            margin-top: 35px;
+
         }
 
+
+        .testimoni-home-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.14);
+
+        }
+
+
+        .testimoni-home-stars {
+
+            color: #f59e0b;
+
+            font-size: 22px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .testimoni-home-text {
+
+            color: #555;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            font-style: italic;
+
+            min-height: 100px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .testimoni-home-user {
+
+            border-top:
+                1px solid #eeeeee;
+
+            padding-top: 18px;
+
+        }
+
+
+        .testimoni-home-user strong {
+
+            display: block;
+
+            color: #173b80;
+
+            font-size: 17px;
+
+        }
+
+
+        .testimoni-home-user span {
+
+            color: #888;
+
+            font-size: 13px;
+
+        }
+
+
+        .testimoni-button {
+
+            text-align: center;
+
+            margin-top: 35px;
+
+        }
+
+
         /* RESPONSIVE */
+
         @media (max-width: 900px) {
+
             .testimoni-home-grid {
+
                 grid-template-columns:
                     repeat(2, 1fr);
+
             }
+
         }
+
+
         @media (max-width: 600px) {
+
             .testimoni-home-grid {
+
                 grid-template-columns: 1fr;
+
             }
+
         }
 
         /* =========================
            PREVIEW TESTIMONI
         ========================= */
+
         .preview-section {
             width: 90%;
             max-width: 1100px;
             margin: 0 auto 80px;
         }
+
         .preview-section h2 {
             text-align: center;
             color: #173b80;
             margin-bottom: 30px;
         }
+
         .preview-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
+
         .preview-card {
             background: white;
             padding: 25px;
@@ -382,11 +456,13 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             border-top: 4px solid #d97706;
         }
+
         .preview-stars {
             color: #f59e0b;
             font-size: 21px;
             margin-bottom: 15px;
         }
+
         .preview-text {
             color: #555;
             line-height: 1.7;
@@ -394,16 +470,19 @@
             min-height: 80px;
             margin-bottom: 20px;
         }
+
         .preview-name {
             color: #173b80;
             font-weight: bold;
             font-size: 17px;
         }
+
         .preview-status {
             color: #888;
             font-size: 13px;
             margin-top: 4px;
         }
+
 
         /* === Kontak & Footer === */
         .contact-section { 
@@ -419,8 +498,6 @@
             background: var(--primary);
             color: #d1d5db;
             padding: 4rem 2rem 2rem;
-            margin-top: 60px;
-            border-radius: 12px 12px 0 0;
         }
         .footer-grid {
             max-width: 1200px;
@@ -456,6 +533,125 @@
         }
 
         /* =========================
+           PERBAIKAN TAMPILAN UTAMA
+        ========================= */
+
+        /* Logo tanpa kotak putih */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            background: transparent !important;
+        }
+
+        .logo img {
+            height: 78px !important;
+            width: auto !important;
+            display: block;
+            object-fit: contain;
+            background: transparent !important;
+            mix-blend-mode: multiply;
+        }
+
+        /* Jarak tombol Hero dibuat lebih lega */
+        .hero-buttons {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 28px !important;
+            flex-direction: row !important;
+        }
+
+        .hero-buttons .btn {
+            margin: 0 !important;
+            min-width: 245px;
+        }
+
+        /* Statistik selalu berjajar ke samping */
+        .stats-container {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center;
+            justify-content: space-around !important;
+            gap: 10px;
+            flex-wrap: nowrap !important;
+            width: 100%;
+            padding: 1.25rem 1rem !important;
+            margin-top: -35px !important;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .stat-item {
+            flex: 1 1 0;
+            min-width: 0;
+            text-align: center;
+            padding: .35rem .5rem !important;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 8px;
+            height: 58px;
+            width: 1px;
+            background: #e5e7eb;
+        }
+
+        .stat-number {
+            font-size: 2.35rem !important;
+            line-height: 1.05;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .stat-label {
+            margin-top: 5px;
+            font-size: .92rem;
+            line-height: 1.25;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column !important;
+                gap: 14px !important;
+            }
+
+            .hero-buttons .btn {
+                width: min(100%, 300px);
+                min-width: 0;
+            }
+
+            .stats-container {
+                flex-direction: row !important;
+                gap: 4px;
+                padding: 1rem .5rem !important;
+                margin-top: -25px !important;
+            }
+
+            .stat-item {
+                padding: .3rem .15rem !important;
+            }
+
+            .stat-item:not(:last-child)::after {
+                height: 45px;
+                top: 6px;
+            }
+
+            .stat-number {
+                font-size: 1.7rem !important;
+            }
+
+            .stat-label {
+                font-size: .72rem;
+                margin-top: 4px;
+            }
+        }
+
+        /* =========================
            RESPONSIVE
         ========================= */
         @media (max-width: 900px) {
@@ -475,130 +671,6 @@
             .testimoni-home-grid { grid-template-columns: 1fr; }
             .testimoni-card { padding: 25px; }
         }
-
-
-        /* =========================================
-           ANIMASI SAAT SCROLL
-           ========================================= */
-
-        .paragraph-animation {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .paragraph-animation.slide-show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-image {
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .slide-image.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .slide-left {
-            opacity: 0;
-            transform: translateX(-70px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .slide-left.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-right {
-            opacity: 0;
-            transform: translateX(70px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .slide-right.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-animation {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .slide-animation.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-delay-1 { transition-delay: 0.1s; }
-        .slide-delay-2 { transition-delay: 0.2s; }
-        .slide-delay-3 { transition-delay: 0.3s; }
-        .slide-delay-4 { transition-delay: 0.4s; }
-        .slide-delay-5 { transition-delay: 0.5s; }
-        .slide-delay-6 { transition-delay: 0.6s; }
-
-        .btn {
-            transition:
-                transform 0.3s ease,
-                background-color 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-        }
-
-        .reason-card,
-        .service-card,
-        .portfolio-card,
-        .testimoni-home-card,
-        .preview-card {
-            transition:
-                transform 0.4s ease,
-                box-shadow 0.4s ease;
-        }
-
-        .reason-card:hover,
-        .service-card:hover,
-        .portfolio-card:hover,
-        .testimoni-home-card:hover,
-        .preview-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.10);
-        }
-
-        .stat-number {
-            display: block;
-            min-width: 120px;
-            font-variant-numeric: tabular-nums;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-            }
-
-            .paragraph-animation,
-            .slide-image,
-            .slide-left,
-            .slide-right,
-            .slide-animation {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -607,18 +679,15 @@
     <header>
         <nav>
             <!-- Ganti src dengan logo Anda -->
-            <a href="index.html" class="logo"><img src="image/Logo Bangun Saka Utama.jpg" alt="Bangun Saka Utama" 
-                style="height:70px; vertical-align:middle; margin-right:10px;"></a>
+            <a href="index.html" class="logo">
+                <img src="image/Logo Bangun Saka Utama.jpg" alt="Bangun Saka Utama">
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#services">Layanan</a></li>
                 <li><a href="#portfolio">Portofolio</a></li>
                 <li><a href="testimoni.html" class="nav-link">Testimoni</a></li>
-                <li><a href="https://wa.me/6281311500788?text=Halo%20saya%20ingin%20bertanya%20mengenai%20Career%20Planner"
-                    class="btn btn-primary nav-link" target="_blank">Hubungi Kami
-                    </a>
-                </li>
             </ul>
         </nav>
     </header>
@@ -629,7 +698,7 @@
             <h1>Wujudkan Rumah Impian Anda</h1>
             <p>Bangun Saka Utama adalah perusahaan jasa pembangunan, renovasi, dan interior dengan kualitas terbaik sejak 2010.</p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Konsultasi Gratis</a>
+                <a href="https://wa.me/6281311500788?text=Halo%20saya%20ingin%20bertanya%20mengenai%20Bangun%20Saka%20Utama" class="btn btn-primary">Konsultasi Gratis</a>
                 <a href="#portfolio" class="btn btn-outline">Lihat Portofolio</a>
             </div>
         </div>
@@ -639,15 +708,15 @@
     <div class="container" style="padding-top: 0; padding-bottom: 0;">
         <div class="stats-container">
             <div class="stat-item">
-                <div class="stat-number" data-target="150" data-suffix="+">0</div>
+                <div class="stat-number" data-target="150" data-suffix="+">0+</div>
                 <div class="stat-label">Proyek Selesai</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" data-target="15" data-suffix="+">0</div>
+                <div class="stat-number" data-target="15" data-suffix="+">0+</div>
                 <div class="stat-label">Tahun Pengalaman</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number" data-target="98" data-suffix="%">0</div>
+                <div class="stat-number" data-target="98" data-suffix="%">0%</div>
                 <div class="stat-label">Pelanggan Puas</div>
             </div>
         </div>
@@ -814,17 +883,18 @@
             <div class="footer-col">
                 <h3>Tautan Cepat</h3>
                 <ul class="footer-links">
-                    <li><a href="tentang.html" class="nav-link">Tentang Kami</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
                     <li><a href="#services">Layanan</a></li>
-                    <li><a href="portofolio.html" class="nav-link">Portofolio</a></li>
-                    <li><a href="testimoni.html" class="nav-link">Testimoni</a></li>
+                    <li><a href="#portfolio">Portofolio</a></li>
+                    <li><a href="#testimoni">Testimoni</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h3>Layanan Kami</h3>
                 <ul class="footer-links">
                     <li><a href="Bangun rumah.html">Bangun Rumah Baru</a></li>
-                    <li><a href="Bangun Gudang.html">Renovasi Bangunan</a></li>
+                    <li><a href="Bangun rumah.html">Renovasi Bangunan</a></li>
+                    <li><a href="Bangun rumah.html">Desain Arsitektur</a></li>
                     <li><a href="Bangun Interior.html">Pekerjaan Interior</a></li>
                 </ul>
             </div>
@@ -843,289 +913,140 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+    /* =========================
+       ANIMASI ANGKA STATISTIK
+       Mulai dari 0 sampai angka target
+    ========================= */
 
-        /* =========================================
-           OBSERVER ANIMASI
-           ========================================= */
+    document.addEventListener('DOMContentLoaded', function () {
+        const statNumbers = document.querySelectorAll('.stat-number');
 
-        const paragraphObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("slide-show");
-                        paragraphObserver.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.2 }
-        );
+        function animateCounter(element) {
+            const target = Number(element.dataset.target);
+            const suffix = element.dataset.suffix || '';
 
-        const imageObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                        imageObserver.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.2 }
-        );
+            if (!Number.isFinite(target)) return;
 
-        const elementObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                        elementObserver.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.15 }
-        );
+            const duration = 1800;
+            const startTime = performance.now();
 
-        /* =========================================
-           1. COUNT UP ANGKA STATISTIK
-           ========================================= */
+            function updateCounter(currentTime) {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
 
-        const statNumbers =
-            document.querySelectorAll(".stat-number");
+                // Gerakan halus: cepat di awal, melambat saat mendekati target
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                const currentValue = Math.floor(target * easedProgress);
 
-        const counterObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
+                element.textContent = currentValue + suffix;
 
-                    if (!entry.isIntersecting) return;
-
-                    const counter = entry.target;
-                    const target = Number(counter.dataset.target);
-                    const suffix = counter.dataset.suffix || "";
-
-                    if (!Number.isFinite(target)) {
-                        console.error(
-                            "data-target tidak valid:",
-                            counter
-                        );
-                        return;
-                    }
-
-                    const duration = 2000;
-                    const startTime = performance.now();
-
-                    function updateCounter(currentTime) {
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(
-                            elapsed / duration,
-                            1
-                        );
-
-                        const easeOut =
-                            1 - Math.pow(1 - progress, 3);
-
-                        const current = Math.floor(
-                            easeOut * target
-                        );
-
-                        counter.textContent =
-                            current + suffix;
-
-                        if (progress < 1) {
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent =
-                                target + suffix;
-                        }
-                    }
-
+                if (progress < 1) {
                     requestAnimationFrame(updateCounter);
-                    counterObserver.unobserve(counter);
+                } else {
+                    element.textContent = target + suffix;
+                }
+            }
+
+            requestAnimationFrame(updateCounter);
+        }
+
+        // Animasi dimulai saat kotak statistik terlihat di layar
+        const counterObserver = new IntersectionObserver(
+            function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach(function (number) {
+                            if (number.dataset.animated === 'true') return;
+
+                            number.dataset.animated = 'true';
+                            animateCounter(number);
+                        });
+
+                        observer.disconnect();
+                    }
                 });
             },
-            { threshold: 0.5 }
+            {
+                threshold: 0.35
+            }
         );
 
-        statNumbers.forEach(function (counter) {
-            counterObserver.observe(counter);
-        });
+        const statsContainer = document.querySelector('.stats-container');
 
-        /* =========================================
-           2. TESTIMONI
-           ========================================= */
-
-        const testimoniHome =
-            document.getElementById("testimoniHome");
-
-        function escapeHTML(text) {
-            return String(text)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
+        if (statsContainer) {
+            counterObserver.observe(statsContainer);
         }
-
-        function tampilkanTestimoniHome() {
-
-            if (!testimoniHome) return;
-
-            let data = [];
-
-            try {
-                data =
-                    JSON.parse(
-                        localStorage.getItem("testimoniBSU")
-                    ) || [];
-            } catch (error) {
-                console.error(
-                    "Data testimoni tidak dapat dibaca:",
-                    error
-                );
-            }
-
-            testimoniHome.innerHTML = "";
-
-            if (!Array.isArray(data) || data.length === 0) {
-                testimoniHome.innerHTML = `
-                    <div style="
-                        grid-column: 1 / -1;
-                        text-align: center;
-                        color: #777;
-                        padding: 30px;
-                    ">
-                        Belum ada testimoni pelanggan.
-                    </div>
-                `;
-                return;
-            }
-
-            const dataTerbaru =
-                data.slice(-3).reverse();
-
-            dataTerbaru.forEach(function (item) {
-
-                const nama =
-                    item && item.nama
-                        ? item.nama
-                        : "Pelanggan";
-
-                const pesan =
-                    item && item.pesan
-                        ? item.pesan
-                        : "Tidak ada komentar.";
-
-                let rating =
-                    Number(item && item.rating);
-
-                if (!Number.isFinite(rating) || rating < 1) {
-                    rating = 5;
-                }
-
-                rating = Math.min(5, Math.floor(rating));
-
-                const card =
-                    document.createElement("div");
-
-                card.className =
-                    "testimoni-home-card slide-animation";
-
-                card.innerHTML = `
-                    <div class="testimoni-home-stars">
-                        ${"★".repeat(rating)}
-                    </div>
-
-                    <p class="testimoni-home-text">
-                        "${escapeHTML(pesan)}"
-                    </p>
-
-                    <div class="testimoni-home-user">
-                        <strong>
-                            ${escapeHTML(nama)}
-                        </strong>
-                        <span>Pelanggan</span>
-                    </div>
-                `;
-
-                testimoniHome.appendChild(card);
-                elementObserver.observe(card);
-            });
-        }
-
-        /* =========================================
-           3. PARAGRAF
-           ========================================= */
-
-        document.querySelectorAll("p").forEach(function (p) {
-            p.classList.add("paragraph-animation");
-            paragraphObserver.observe(p);
-        });
-
-        /* =========================================
-           4. GAMBAR
-           ========================================= */
-
-        document.querySelectorAll("img").forEach(function (img) {
-            img.classList.add("slide-image");
-            imageObserver.observe(img);
-        });
-
-        /* =========================================
-           5. CARD, JUDUL, TOMBOL, KONTAK, FOOTER
-           ========================================= */
-
-        const elements = document.querySelectorAll(`
-            h1,
-            h2,
-            h3,
-            .btn,
-            .reason-card,
-            .service-card,
-            .portfolio-card,
-            .preview-card,
-            .stats-container,
-            .stat-item,
-            .contact-info,
-            .contact-map,
-            .footer-col,
-            .footer-bottom
-        `);
-
-        elements.forEach(function (element, index) {
-
-            const isCard =
-                element.classList.contains("reason-card") ||
-                element.classList.contains("service-card") ||
-                element.classList.contains("portfolio-card") ||
-                element.classList.contains("preview-card") ||
-                element.classList.contains("stats-container") ||
-                element.classList.contains("stat-item");
-
-            if (isCard) {
-                element.classList.add("slide-animation");
-                element.classList.add(
-                    `slide-delay-${(index % 6) + 1}`
-                );
-                elementObserver.observe(element);
-                return;
-            }
-
-            if (index % 2 === 0) {
-                element.classList.add("slide-left");
-            } else {
-                element.classList.add("slide-right");
-            }
-
-            elementObserver.observe(element);
-        });
-
-        /* =========================================
-           6. TAMPILKAN TESTIMONI
-           ========================================= */
-
-        tampilkanTestimoniHome();
-
     });
-    </script>
+
+
+    /* =========================
+       TESTIMONI INDEX
+    ========================= */
+
+    const testimoniHome = document.getElementById('testimoniHome');
+
+    function tampilkanTestimoniHome() {
+        if (!testimoniHome) return;
+
+        let data = [];
+
+        try {
+            data = JSON.parse(localStorage.getItem('testimoniBSU')) || [];
+        } catch (error) {
+            console.error('Data testimoni tidak dapat dibaca:', error);
+            data = [];
+        }
+
+        testimoniHome.innerHTML = '';
+
+        if (!Array.isArray(data) || data.length === 0) {
+            testimoniHome.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; color: #777; padding: 30px;">
+                    Belum ada testimoni pelanggan.
+                </div>
+            `;
+            return;
+        }
+
+        // Tampilkan maksimal 3 testimoni terbaru
+        const dataTerbaru = data.slice(-3).reverse();
+
+        dataTerbaru.forEach(function(item) {
+            const nama = item && item.nama ? item.nama : 'Pelanggan';
+            const pesan = item && item.pesan ? item.pesan : 'Tidak ada komentar.';
+            let rating = Number(item && item.rating);
+
+            if (!Number.isFinite(rating) || rating < 1) rating = 5;
+            rating = Math.min(5, Math.floor(rating));
+
+            const bintang = '★'.repeat(rating);
+            const card = document.createElement('div');
+            card.className = 'testimoni-home-card';
+
+            card.innerHTML = `
+                <div class="testimoni-home-stars">${bintang}</div>
+                <p class="testimoni-home-text">"${escapeHTML(pesan)}"</p>
+                <div class="testimoni-home-user">
+                    <strong>${escapeHTML(nama)}</strong>
+                    <span>Pelanggan</span>
+                </div>
+            `;
+
+            testimoniHome.appendChild(card);
+        });
+    }
+
+    function escapeHTML(text) {
+        return String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    tampilkanTestimoniHome();
+</script>
+    
 
 </body>
 </html>
