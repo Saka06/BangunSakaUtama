@@ -33,7 +33,7 @@
         }
 
         header img {
-            height: 70px;
+            height: 80px;
         }
 
         nav {
@@ -141,6 +141,29 @@
             background: #b45309;
         }
 
+        /* Footer disamakan dengan halaman beranda. */
+        footer {
+            background: #0a2240;
+            color: #d1d5db;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo img { height: 78px; width: auto; display: block; mix-blend-mode: normal; }
+        .footer-col h3 { color: #ffffff; margin: 1.5rem 0; font-size: 1.2rem; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #d1d5db; text-decoration: none; }
+        .footer-links a:hover { color: #f39c12; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+
         /* =========================
            RESPONSIVE
         ========================= */
@@ -189,17 +212,17 @@
 
     <!-- HEADER -->
     <header>
-        <a href="index.html">
+        <a class="logo">
             <img src="image/Logo Bangun Saka Utama.jpg"
                  alt="Bangun Saka Utama">
         </a>
 
         <nav>
             <a href="index.html">Beranda</a>
-            <a href="index.html#about">Tentang</a>
+            <a href="tentang.html">Tentang</a>
             <a href="index.html#services">Layanan</a>
-            <a href="index.html#portofolio">Portofolio</a>
-            <a href="index.html#testimoni">Testimoni</a>
+            <a href="portofolio.html">Portofolio</a>
+            <a href="testimoni.html">Testimoni</a>
         </nav>
     </header>
 
@@ -281,6 +304,33 @@
             </button>
         </form>
     </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="footer-logo"><img src="image/Logo Bangun Saka Utama 1.jpg" alt="Bangun Saka Utama"></a>
+                <p style="font-size: 0.9rem;">Mitra terpercaya Anda dalam mewujudkan bangunan dan interior berkualitas tinggi.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tautan Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="index.html#services">Layanan</a></li>
+                    <li><a href="portofolio.html">Portofolio</a></li>
+                    <li><a href="testimoni.html">Testimoni</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Layanan Kami</h3>
+                <ul class="footer-links">
+                    <li><a href="Bangun Rumah.html">Bangun Rumah Baru</a></li>
+                    <li><a href="Bangun Gudang.html">Renovasi Bangunan</a></li>
+                    <li><a href="Bangun Interior.html">Pekerjaan Interior</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Bangun Saka Utama. All rights reserved.</p></div>
+    </footer>
 
     <script>
         const form =

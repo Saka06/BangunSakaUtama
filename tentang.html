@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tentang Bangun Saka Utama, mitra pembangunan dan interior berkualitas.">
+    <title>Tentang Kami - Bangun Saka Utama</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #0a2240; --primary-soft: #173b80; --accent: #f39c12; --accent-hover: #d68910; --ink: #1f2937; --muted: #667085; --surface: #f6f8fb; --white: #fff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', Arial, sans-serif; color: var(--ink); background: var(--surface); line-height: 1.65; }
+        header { position: fixed; z-index: 10; top: 0; left: 0; width: 100%; background: rgba(255,255,255,.97); box-shadow: 0 2px 12px rgba(10,34,64,.1); }
+        nav { max-width: 1200px; min-height: 94px; margin: auto; padding: 12px 32px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+        .logo img { display: block; width: auto; height: 80px; mix-blend-mode: multiply; }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 25px; }
+        .nav-links a { color: var(--ink); font-size: .95rem; font-weight: 600; text-decoration: none; transition: color .2s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .button { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 0 22px; border: 2px solid var(--accent); border-radius: 6px; background: var(--accent); color: var(--white); font-weight: 700; text-decoration: none; transition: .2s ease; }
+        .button:hover { background: var(--accent-hover); border-color: var(--accent-hover); transform: translateY(-2px); }
+        .button.outline { border-color: var(--white); background: transparent; }
+        .button.outline:hover { background: var(--white); color: var(--primary); }
+        .hero { min-height: 510px; padding: 160px 32px 74px; color: var(--white); background: linear-gradient(90deg, rgba(10,34,64,.93), rgba(10,34,64,.64)), url('image/Proyek%20Ayah/IMG-20161031-WA0021.jpg') center/cover; }
+        .hero-inner { max-width: 1200px; margin: auto; }
+        .eyebrow { margin-bottom: 12px; color: #ffd381; font-weight: 800; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; }
+        h1 { max-width: 720px; color: var(--white); font-size: clamp(2.3rem, 5vw, 4.25rem); line-height: 1.12; }
+        .hero p:not(.eyebrow) { max-width: 630px; margin: 22px 0 30px; color: #edf2f9; font-size: 1.12rem; }
+        .container { max-width: 1200px; margin: auto; padding: 84px 32px; }
+        h2 { color: var(--primary); font-size: clamp(1.8rem, 3vw, 2.55rem); line-height: 1.2; }
+        h3 { color: var(--primary); font-size: 1.13rem; }
+        .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .photo-wrap { position: relative; }
+        .photo-wrap img { width: 100%; min-height: 370px; border-radius: 10px; display: block; object-fit: cover; box-shadow: 18px 18px 0 #e9edf3; }
+        .intro-copy p { margin-top: 18px; color: var(--muted); }
+        .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 32px; border-top: 1px solid #dce3ed; }
+        .mini-stats div { padding: 18px 14px 0 0; }
+        .mini-stats div + div { padding-left: 14px; border-left: 1px solid #dce3ed; }
+        .mini-stats strong { display: block; color: var(--accent); font-size: 1.55rem; }
+        .mini-stats span { font-size: .82rem; color: var(--muted); }
+        .values { background: var(--primary); }
+        .values .container { padding-top: 76px; padding-bottom: 76px; }
+        .values h2, .values .lead { text-align: center; color: var(--white); }
+        .lead { max-width: 680px; margin: 15px auto 42px; color: var(--muted); }
+        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .value-card { padding: 30px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; }
+        .value-icon { display: grid; place-items: center; width: 45px; height: 45px; margin-bottom: 20px; border-radius: 50%; background: var(--accent); color: var(--primary); font-weight: 800; }
+        .value-card h3 { color: var(--white); margin-bottom: 9px; }
+        .value-card p { color: #d7e1ee; font-size: .93rem; }
+        .process-title { text-align: center; }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 42px; }
+        .step { padding: 24px; border-radius: 9px; background: var(--white); box-shadow: 0 5px 20px rgba(10,34,64,.06); }
+        .step-number { display: block; margin-bottom: 12px; color: var(--accent); font-size: 1.75rem; font-weight: 800; }
+        .step p { margin-top: 8px; color: var(--muted); font-size: .9rem; }
+        .cta { padding: 75px 32px; text-align: center; background: #e9edf3; }
+        .cta h2 { margin: auto; max-width: 700px; }
+        .cta p { max-width: 620px; margin: 14px auto 27px; color: var(--muted); }
+        footer { padding: 52px 32px 22px; color: #d1dbe8; background: var(--primary); }
+        .footer-grid { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 42px; }
+        .footer-grid h3 { margin-bottom: 12px; color: var(--white); }
+        .footer-grid p, .footer-grid li { font-size: .92rem; }
+        .footer-grid ul { list-style: none; }
+        .footer-grid li + li { margin-top: 8px; }
+        .footer-grid a { color: #d1dbe8; text-decoration: none; }
+        .footer-grid a:hover { color: #ffd381; }
+        .footer-bottom { max-width: 1200px; margin: 36px auto 0; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.14); font-size: .85rem; text-align: center; }
+        footer .logo img { height: 78px; mix-blend-mode: normal; }
+        @media (max-width: 800px) { nav { min-height: 78px; padding: 8px 20px; } .logo img { height: 56px; } .nav-links { gap: 13px; } .nav-links a { font-size: .82rem; } .hero { padding: 128px 24px 60px; } .container { padding: 62px 24px; } .intro { grid-template-columns: 1fr; gap: 34px; } .photo-wrap { order: 2; } .value-grid { grid-template-columns: 1fr; } .steps { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 520px) { .nav-links li:nth-child(3), .nav-links li:nth-child(5) { display: none; } .nav-links { gap: 15px; } .hero { min-height: 460px; } .mini-stats { grid-template-columns: 1fr; } .mini-stats div, .mini-stats div + div { padding: 13px 0; border-left: 0; border-bottom: 1px solid #dce3ed; } .steps, .footer-grid { grid-template-columns: 1fr; } .cta { padding: 60px 24px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Navigasi utama">
+            <a class="logo" aria-label="Bangun Saka Utama - Beranda"><img src="image/Logo Bangun Saka Utama.jpg" alt="Logo Bangun Saka Utama"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a class="active" href="tentang.html">Tentang</a></li>
+                <li><a href="index.html#services">Layanan</a></li>
+                <li><a href="portofolio.html">Portofolio</a></li>
+                <li><a href="testimoni.html">Testimoni</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <p class="eyebrow">Tentang Bangun Saka Utama</p>
+                <h1>Mewujudkan bangunan yang kuat, nyaman, dan bernilai.</h1>
+                <p>Kami adalah mitra pembangunan dan interior yang mengutamakan kualitas pengerjaan, komunikasi yang terbuka, serta hasil yang sesuai kebutuhan Anda.</p>
+                <a class="button outline" href="portofolio.html">Lihat Portofolio</a>
+            </div>
+        </section>
+        <section class="container intro" id="profil">
+            <div class="photo-wrap"><img src="image/Proyek Ayah/IMG-20161031-WA0020.jpg" alt="Proses pengerjaan proyek Bangun Saka Utama"></div>
+            <div class="intro-copy">
+                <p class="eyebrow" style="color:#d97706">Siapa Kami</p>
+                <h2>Partner terpercaya untuk setiap tahap pembangunan.</h2>
+                <p>Bangun Saka Utama hadir untuk membantu pelanggan mewujudkan rumah, ruang usaha, gudang, dan interior impian. Kami memahami bahwa setiap proyek memiliki kebutuhan, anggaran, dan karakter yang berbeda.</p>
+                <p>Karena itu, kami mendampingi proses dari perencanaan hingga penyelesaian dengan tim yang teliti dan fokus pada mutu pekerjaan.</p>
+                <div class="mini-stats" aria-label="Keunggulan Bangun Saka Utama">
+                    <div><strong>Teliti</strong><span>Pada setiap detail</span></div>
+                    <div><strong>Terbuka</strong><span>Dalam komunikasi</span></div>
+                    <div><strong>Rapi</strong><span>Dalam pengerjaan</span></div>
+                </div>
+            </div>
+        </section>
+        <section class="values">
+            <div class="container">
+                <h2>Komitmen kami dalam bekerja</h2>
+                <p class="lead">Kami menjaga kepercayaan pelanggan dengan standar kerja yang sederhana, jelas, dan konsisten.</p>
+                <div class="value-grid">
+                    <article class="value-card"><div class="value-icon">01</div><h3>Kualitas Terjaga</h3><p>Kami mengutamakan material dan pengerjaan yang tepat agar hasil proyek tahan lama dan nyaman digunakan.</p></article>
+                    <article class="value-card"><div class="value-icon">02</div><h3>Komunikasi Jelas</h3><p>Setiap kebutuhan dan perkembangan proyek disampaikan dengan terbuka agar Anda merasa tenang selama proses berlangsung.</p></article>
+                    <article class="value-card"><div class="value-icon">03</div><h3>Berorientasi Solusi</h3><p>Kami membantu menemukan solusi yang selaras dengan fungsi ruang, desain, dan anggaran yang Anda siapkan.</p></article>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <div class="process-title"><p class="eyebrow" style="color:#d97706">Cara Kerja</p><h2>Proses yang mudah dipahami</h2></div>
+            <div class="steps">
+                <article class="step"><span class="step-number">01</span><h3>Konsultasi</h3><p>Ceritakan kebutuhan, lokasi, dan gambaran proyek Anda kepada kami.</p></article>
+                <article class="step"><span class="step-number">02</span><h3>Perencanaan</h3><p>Kami menyusun ruang lingkup pekerjaan dan solusi yang sesuai kebutuhan.</p></article>
+                <article class="step"><span class="step-number">03</span><h3>Pengerjaan</h3><p>Tim menjalankan pekerjaan dengan perhatian pada kualitas, keselamatan, dan kerapian.</p></article>
+                <article class="step"><span class="step-number">04</span><h3>Serah Terima</h3><p>Proyek ditinjau bersama agar hasil akhir sesuai dengan kesepakatan.</p></article>
+            </div>
+        </section>
+        <section class="cta">
+            <h2>Siap membangun ruang yang Anda impikan?</h2>
+            <p>Kenali layanan kami dan lihat berbagai hasil pengerjaan Bangun Saka Utama.</p>
+            <a class="button" href="index.html#services">Jelajahi Layanan</a>
+        </section>
+    </main>
+
+    <!-- Footer Lengkap -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <!-- Ganti dengan Logo jika ada -->
+                <a href="index.html" class="logo"><img src="image/Logo Bangun Saka Utama 1.jpg" alt="Bangun Saka Utama"></a>
+                <p style="font-size: 0.9rem;">Mitra terpercaya Anda dalam mewujudkan bangunan dan interior berkualitas tinggi.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tautan Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="portofolio.html">Portofolio</a></li>
+                    <li><a href="testimoni.html">Testimoni</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Layanan Kami</h3>
+                <ul class="footer-links">
+                    <li><a href="Bangun Rumah.html">Bangun Rumah Baru</a></li>
+                    <li><a href="Bangun Gudang.html">Renovasi Bangunan</a></li>
+                    <li><a href="Bangun Interior.html">Pekerjaan Interior</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bangun Saka Utama. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

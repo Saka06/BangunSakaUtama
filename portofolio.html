@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Proyek - Bangun Saka Utama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+            text-decoration: none; 
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1a5f7a;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5f7a;
+            font-size: 48px;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '👁️ Lihat Detail';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 95, 122, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 1;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            color: #1a5f7a;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+            animation: slideUp 0.3s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            position: relative;
+            height: 400px;
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            z-index: 1001;
+        }
+
+        .close-btn:hover {
+            background: white;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-title {
+            font-size: 36px;
+            color: #1a5f7a;
+            margin-bottom: 15px;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #1a5f7a;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .section-content {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #1a5f7a;
+        }
+
+        .feature-item strong {
+            color: #1a5f7a;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .modal-title {
+                font-size: 24px;
+            }
+
+            .modal-header {
+                height: 250px;
+            }
+        }
+
+        /* Header dan footer disamakan dengan halaman beranda. */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 0;
+            display: block;
+        }
+
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 78px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            margin: 0;
+            text-decoration: none;
+            color: #1f2937;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #f39c12;
+        }
+
+        .container {
+            padding-top: 150px;
+        }
+
+        footer {
+            background: #0a2240;
+            color: #d1d5db;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer .logo img { mix-blend-mode: normal; }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a class="logo">
+                <img src="image/Logo Bangun Saka Utama.jpg" alt="Bangun Saka Utama">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="index.html#services">Layanan</a></li>
+                <li><a href="portofolio.html" class="active">Portofolio</a></li>
+                <li><a href="testimoni.html" class="nav-link">Testimoni</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Portofolio Proyek</h1>
+
+        <div class="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="project-card" onclick="openModal(0)">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2387CEEB;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23E0FFFF;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23g1)'/%3E%3Crect x='80' y='120' width='240' height='140' fill='%23F5F5F5' stroke='%23333' stroke-width='2'/%3E%3Crect x='100' y='140' width='60' height='50' fill='%2387CEEB' stroke='%23333' stroke-width='1'/%3E%3Crect x='170' y='140' width='60' height='50' fill='%2387CEEB' stroke='%23333' stroke-width='1'/%3E%3Crect x='240' y='140' width='60' height='50' fill='%2387CEEB' stroke='%23333' stroke-width='1'/%3E%3Cpolygon points='80,120 200,40 320,120' fill='%23FFD700' stroke='%23333' stroke-width='2'/%3E%3Crect x='50' y='260' width='300' height='30' fill='%238B7355'/%3E%3Ccircle cx='120' cy='200' r='15' fill='%2390EE90'/%3E%3Ccircle cx='280' cy='200' r='15' fill='%2390EE90'/%3E%3C/svg%3E" alt="Rumah Minimalis 2 Lantai" class="project-image">
+                <div class="project-info">
+                    <div class="project-title">Rumah Minimalis 2 Lantai</div>
+                    <div class="project-meta">
+                        <div class="meta-item">📍 Bogor</div>
+                        <div class="meta-item">📅 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" onclick="openModal(1)">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23778899;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%239ACD32;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23g2)'/%3E%3Crect x='60' y='100' width='280' height='160' fill='%238B4513' stroke='%23333' stroke-width='2'/%3E%3Crect x='80' y='120' width='50' height='50' fill='%23FFD700' stroke='%23333' stroke-width='1'/%3E%3Crect x='150' y='120' width='50' height='50' fill='%23FFD700' stroke='%23333' stroke-width='1'/%3E%3Crect x='220' y='120' width='50' height='50' fill='%23FFD700' stroke='%23333' stroke-width='1'/%3E%3Crect x='290' y='120' width='40' height='60' fill='%23696969'/%3E%3Crect x='90' y='190' width='40' height='50' fill='%23696969'/%3E%3Crect x='160' y='190' width='40' height='50' fill='%23696969'/%3E%3Crect x='230' y='190' width='40' height='50' fill='%23696969'/%3E%3Crect x='50' y='260' width='300' height='30' fill='%234A4A4A'/%3E%3C/svg%3E" alt="Bangun Gudang Industri" class="project-image">
+                <div class="project-info">
+                    <div class="project-title">Bangun Gudang Industri</div>
+                    <div class="project-meta">
+                        <div class="meta-item">📍 Bekasi</div>
+                        <div class="meta-item">📅 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" onclick="openModal(2)">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23F5DEB3;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23FFFACD;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23g3)'/%3E%3Crect x='50' y='80' width='300' height='180' fill='%23F5F5F5' stroke='%23333' stroke-width='2'/%3E%3Crect x='60' y='90' width='70' height='70' fill='%23DEB887' stroke='%23333' stroke-width='1'/%3E%3Crect x='150' y='90' width='70' height='70' fill='%23DEB887' stroke='%23333' stroke-width='1'/%3E%3Crect x='240' y='90' width='70' height='70' fill='%23DEB887' stroke='%23333' stroke-width='1'/%3E%3Crect x='80' y='180' width='100' height='60' fill='%238B0000'/%3E%3Ctext x='200' y='215' font-size='14' fill='%23333' text-anchor='middle'%3EKitchen Set%3C/text%3E%3Crect x='50' y='260' width='300' height='30' fill='%23228B22'/%3E%3Ccircle cx='120' cy='150' r='8' fill='%23FFD700'/%3E%3Ccircle cx='210' cy='150' r='8' fill='%23FFD700'/%3E%3Ccircle cx='300' cy='150' r='8' fill='%23FFD700'/%3E%3C/svg%3E" alt="Interior Kitchen Set Mewah" class="project-image">
+                <div class="project-info">
+                    <div class="project-title">Interior Kitchen Set Mewah</div>
+                    <div class="project-meta">
+                        <div class="meta-item">📍 Jakarta</div>
+                        <div class="meta-item">📅 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalImage" src="" alt="" class="modal-image">
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-meta" id="modalMeta"></div>
+                
+                <div class="section">
+                    <div class="section-title">Deskripsi Proyek</div>
+                    <div class="section-content" id="modalDescription"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Spesifikasi & Fitur</div>
+                    <div class="features" id="modalFeatures"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Durasi Proyek</div>
+                    <div class="section-content" id="modalDuration"></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Teknologi & Material</div>
+                    <div class="section-content" id="modalTechnology"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Lengkap -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <!-- Ganti dengan Logo jika ada -->
+                <a href="index.html" class="logo"><img src="image/Logo Bangun Saka Utama 1.jpg" alt="Bangun Saka Utama"></a>
+                <p style="font-size: 0.9rem;">Mitra terpercaya Anda dalam mewujudkan bangunan dan interior berkualitas tinggi.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tautan Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="portofolio.html">Portofolio</a></li>
+                    <li><a href="testimoni.html">Testimoni</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Layanan Kami</h3>
+                <ul class="footer-links">
+                    <li><a href="Bangun rumah.html">Bangun Rumah Baru</a></li>
+                    <li><a href="Bangun Gudang.html">Renovasi Bangunan</a></li>
+                    <li><a href="Bangun Interior.html">Pekerjaan Interior</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Bangun Saka Utama. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const projects = [
+            {
+                title: "Rumah Minimalis 2 Lantai",
+                location: "Bogor",
+                year: "2025",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2387CEEB;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23E0FFFF;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23g1)'/%3E%3Crect x='80' y='120' width='240' height='140' fill='%23F5F5F5' stroke='%23333' stroke-width='2'/%3E%3Crect x='100' y='140' width='60' height='50' fill='%2387CEEB' stroke='%23333' stroke-width='1'/%3E%3Crect x='170' y='140' width='60' height='50' fill='%2387CEEB' stroke='%23333' stroke-width='1'/%3E%3Crect x='240' y='140' width='60' height='50' fill='%2387CEEB' stroke='%23333' stroke-width='1'/%3E%3Cpolygon points='80,120 200,40 320,120' fill='%23FFD700' stroke='%23333' stroke-width='2'/%3E%3Crect x='50' y='260' width='300' height='30' fill='%238B7355'/%3E%3Ccircle cx='120' cy='200' r='15' fill='%2390EE90'/%3E%3Ccircle cx='280' cy='200' r='15' fill='%2390EE90'/%3E%3C/svg%3E",
+                description: "Proyek rumah minimalis modern dengan desain yang efisien dan fungsional. Menggabungkan gaya kontemporer dengan kenyamanan maksimal untuk keluarga urban. Bangunan ini dirancang dengan konsep terbuka yang memaksimalkan pencahayaan alami dan sirkulasi udara.",
+                features: [
+                    { title: "Luas Bangunan", desc: "250 m²" },
+                    { title: "Luas Tanah", desc: "350 m²" },
+                    { title: "Jumlah Kamar", desc: "3 Kamar Tidur" },
+                    { title: "Kamar Mandi", desc: "2 Kamar Mandi" },
+                    { title: "Garasi", desc: "2 Unit" },
+                    { title: "Taman", desc: "Area Taman Hijau" }
+                ],
+                duration: "8 bulan (Januari - Agustus 2025)",
+                technology: "Struktur beton bertulang dengan finishing cat duco dan keramik premium. Menggunakan sistem plumbing modern dan instalasi listrik tersertifikasi. Atap menggunakan genteng keramik berkualitas tinggi dengan insulasi panas."
+            },
+            {
+                title: "Bangun Gudang Industri",
+                location: "Bekasi",
+                year: "2024",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23778899;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%239ACD32;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23g2)'/%3E%3Crect x='60' y='100' width='280' height='160' fill='%238B4513' stroke='%23333' stroke-width='2'/%3E%3Crect x='80' y='120' width='50' height='50' fill='%23FFD700' stroke='%23333' stroke-width='1'/%3E%3Crect x='150' y='120' width='50' height='50' fill='%23FFD700' stroke='%23333' stroke-width='1'/%3E%3Crect x='220' y='120' width='50' height='50' fill='%23FFD700' stroke='%23333' stroke-width='1'/%3E%3Crect x='290' y='120' width='40' height='60' fill='%23696969'/%3E%3Crect x='90' y='190' width='40' height='50' fill='%23696969'/%3E%3Crect x='160' y='190' width='40' height='50' fill='%23696969'/%3E%3Crect x='230' y='190' width='40' height='50' fill='%23696969'/%3E%3Crect x='50' y='260' width='300' height='30' fill='%234A4A4A'/%3E%3C/svg%3E",
+                description: "Fasilitas gudang industri modern dengan kapasitas penyimpanan besar dan sistem penanganan material yang efisien. Dirancang untuk mendukung operasi logistik skala besar dengan standar keselamatan kerja internasional.",
+                features: [
+                    { title: "Luas Bangunan", desc: "5000 m²" },
+                    { title: "Tinggi Plafon", desc: "8 meter" },
+                    { title: "Daya Listrik", desc: "500 KVA" },
+                    { title: "Loading Dock", desc: "4 Unit" },
+                    { title: "Kantor", desc: "300 m²" },
+                    { title: "Parkir Kendaraan", desc: "50 Spot" }
+                ],
+                duration: "12 bulan (Januari - Desember 2024)",
+                technology: "Struktur baja ringan dengan dinding beton precast. Menggunakan sistem sprinkler otomatis untuk keamanan kebakaran. Lantai industrial dengan daya dukung hingga 2 ton/m². Sistem ventilasi natural dan mekanik untuk sirkulasi udara optimal."
+            },
+            {
+                title: "Interior Kitchen Set Mewah",
+                location: "Jakarta",
+                year: "2025",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23F5DEB3;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23FFFACD;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='300' fill='url(%23g3)'/%3E%3Crect x='50' y='80' width='300' height='180' fill='%23F5F5F5' stroke='%23333' stroke-width='2'/%3E%3Crect x='60' y='90' width='70' height='70' fill='%23DEB887' stroke='%23333' stroke-width='1'/%3E%3Crect x='150' y='90' width='70' height='70' fill='%23DEB887' stroke='%23333' stroke-width='1'/%3E%3Crect x='240' y='90' width='70' height='70' fill='%23DEB887' stroke='%23333' stroke-width='1'/%3E%3Crect x='80' y='180' width='100' height='60' fill='%238B0000'/%3E%3Ctext x='200' y='215' font-size='14' fill='%23333' text-anchor='middle'%3EKitchen Set%3C/text%3E%3Crect x='50' y='260' width='300' height='30' fill='%23228B22'/%3E%3Ccircle cx='120' cy='150' r='8' fill='%23FFD700'/%3E%3Ccircle cx='210' cy='150' r='8' fill='%23FFD700'/%3E%3Ccircle cx='300' cy='150' r='8' fill='%23FFD700'/%3E%3C/svg%3E",
+                description: "Desain interior dapur premium dengan material berkualitas tinggi dan teknologi terkini. Menciptakan ruang memasak yang elegan, fungsional, dan nyaman untuk kebutuhan keluarga modern. Setiap detail dirancang dengan sempurna untuk estetika dan kepraktisan.",
+                features: [
+                    { title: "Material Utama", desc: "Kayu Jati & Stainless Steel" },
+                    { title: "Panjang Kitchen Set", desc: "4 meter" },
+                    { title: "Kompor & Oven", desc: "Bosch Professional" },
+                    { title: "Exhaust Hood", desc: "Elica 90 cm" },
+                    { title: "Pencahayaan", desc: "LED Modern" },
+                    { title: "Backsplash", desc: "Keramik Premium" }
+                ],
+                duration: "3 bulan (Januari - Maret 2025)",
+                technology: "Menggunakan kayu jati pilihan dengan finishing cat PU berkualitas tinggi. Peralatan dapur dari brand internasional terpercaya (Bosch, Elica). Sistem penyejuk udara terintegrasi dan pencahayaan LED hemat energi. Instalasi gas dan listrik memenuhi standar keselamatan SNI."
+            }
+        ];
+
+        function openModal(index) {
+            const project = projects[index];
+            document.getElementById('modalImage').src = project.image;
+            document.getElementById('modalTitle').textContent = project.title;
+            
+            document.getElementById('modalMeta').innerHTML = `
+                <div class="modal-meta-item">📍 ${project.location}</div>
+                <div class="modal-meta-item">📅 ${project.year}</div>
+                <div class="modal-meta-item">✅ Selesai</div>
+            `;
+            
+            document.getElementById('modalDescription').textContent = project.description;
+            
+            document.getElementById('modalFeatures').innerHTML = project.features
+                .map(f => `<div class="feature-item"><strong>${f.title}:</strong> ${f.desc}</div>`)
+                .join('');
+            
+            document.getElementById('modalDuration').textContent = project.duration;
+            document.getElementById('modalTechnology').textContent = project.technology;
+            
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
